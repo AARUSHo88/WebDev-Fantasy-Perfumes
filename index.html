@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Perfumes - An Elegant Experience</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles for Elegance -->
+    <style>
+        :root {
+            --background-color: #fdfdfd;
+            --text-color: #333;
+            --primary-color: #8a7968; /* Muted Taupe */
+            --secondary-color: #e9e3dc; /* Soft Beige */
+            --card-bg: #ffffff;
+            --font-primary: 'Playfair Display', serif;
+            --font-secondary: 'Roboto', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        h1, h2, h3, h4, h5, .navbar-brand, .section-title {
+            font-family: var(--font-primary);
+            font-weight: 700;
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #eee;
+        }
+        
+        .navbar-brand img {
+            max-height: 40px;
+        }
+        
+        .nav-link {
+            font-weight: 400;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+
+        .cart-icon {
+            cursor: pointer;
+        }
+        .cart-badge {
+            font-size: 0.7rem;
+            top: -5px;
+            right: -10px;
+        }
+
+        /* Carousel Hero Section */
+        .carousel-item {
+            height: 85vh;
+            min-height: 400px;
+            background-size: cover;
+            background-position: center;
+        }
+        .carousel-caption {
+            bottom: 20%;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+        .carousel-caption h1 {
+            font-size: 4.5rem;
+            letter-spacing: 1.5px;
+        }
+
+        /* Product Card Enhancements */
+        .product-card {
+            border: 1px solid var(--secondary-color);
+            background-color: var(--card-bg);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 1rem 3rem rgba(0,0,0,.1);
+        }
+        .product-card .card-img-top {
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
+        .product-card .card-body {
+            padding: 2rem;
+        }
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            font-family: var(--font-secondary);
+        }
+        
+        .section-title {
+            font-size: 3.5rem;
+            margin-bottom: 5rem;
+        }
+        
+        .btn-outline-primary {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        
+        .btn-primary {
+             background-color: var(--primary-color);
+             border-color: var(--primary-color);
+             border-radius: 50px;
+             padding: 12px 40px;
+        }
+
+        .btn-primary.buy-now {
+             padding: 10px 20px;
+             font-size: 0.9rem;
+        }
+
+        .btn-primary:hover {
+             background-color: #796857;
+             border-color: #796857;
+        }
+
+        /* Section Styling */
+        .section-padding {
+            padding: 6rem 0;
+        }
+
+        #contact {
+            background-color: var(--secondary-color);
+        }
+        .contact-info i {
+            color: var(--primary-color);
+        }
+        
+        #craft {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://placehold.co/1920x800/8a7968/ffffff?text=Our+Craft');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+        }
+        
+        .ingredient-card {
+            text-align: center;
+        }
+        .ingredient-card img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            border: 5px solid var(--secondary-color);
+            transition: transform 0.3s ease;
+        }
+        .ingredient-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .testimonial-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--secondary-color);
+            border-radius: 0.5rem;
+        }
+        .testimonial-card .card-body { font-style: italic; }
+        .testimonial-card .card-footer {
+            font-style: normal;
+            font-weight: bold;
+            color: var(--primary-color);
+            background: none;
+            border-top: none;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+        }
+        .accordion-button:focus { box-shadow: 0 0 0 0.25rem rgba(138, 121, 104, 0.25); }
+
+        footer {
+            background-color: #222;
+            color: #aaa;
+        }
+        .footer-social-icons a {
+            color: #aaa;
+            font-size: 1.5rem;
+            margin: 0 0.75rem;
+            transition: color 0.3s ease;
+        }
+        .footer-social-icons a:hover { color: #fff; }
+
+        /* Cart Modal */
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+        }
+        .quantity-input {
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container-fluid px-5">
+            <a class="navbar-brand" href="#">
+                <img src="images/logo.jpeg" alt="Fantasy Perfumes Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#men">Men</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#women">Women</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#bestsellers">Best Sellers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link position-relative cart-icon" data-bs-toggle="modal" data-bs-target="#cartModal">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="position-absolute translate-middle badge rounded-pill bg-danger cart-badge">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Carousel -->
+    <header id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" style="background-image: url('images/img1.png');">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>Welcome to Our Perfume Shop!</h1>
+            <p class="lead fs-4">Explore a premium range of Fragrances</p>
+          </div>
+        </div>
+        <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1920x1080/ccc/666?text=Timeless+Scents');">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>Discover Your Signature Scent</h1>
+            <p class="lead fs-4">Crafted with passion, designed for you.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container my-5">
+            <!-- Men Section -->
+            <section id="men" class="section-padding">
+                <h2 class="text-center section-title">Fragrances for Men</h2>
+                <div class="row g-5">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card product-card h-100 shadow-sm">
+                            <img src="images/img2.png" class="card-img-top" alt="Oud Perfume">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fs-3">Oud</h5>
+                                <p class="card-text text-secondary">Notes of Caramel, Vanilla, Cedarwood, and Musk.</p>
+                                <p class="price mt-auto">Rs.699</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-outline-primary add-to-cart" data-name="Oud" data-price="699" data-img="images/img2.png">Add to Cart</button>
+                                    <button class="btn btn-primary buy-now">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card product-card h-100 shadow-sm">
+                            <img src="images/img3.png" class="card-img-top" alt="G.O.A.T Perfume">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fs-3">G.O.A.T</h5>
+                                <p class="card-text text-secondary">Bergamot, lavender, pepper and warm woody notes.</p>
+                                 <p class="price mt-auto">Rs.599</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-outline-primary add-to-cart" data-name="G.O.A.T" data-price="599" data-img="images/img3.png">Add to Cart</button>
+                                    <button class="btn btn-primary buy-now">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card product-card h-100 shadow-sm">
+                             <img src="images/img4.png" class="card-img-top" alt="Klub Perfume">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fs-3">Klub</h5>
+                                <p class="card-text text-secondary">Lemon, pineapple, blackcurrant and apple.</p>
+                                 <p class="price mt-auto">Rs.599</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-outline-primary add-to-cart" data-name="Klub" data-price="599" data-img="images/img4.png">Add to Cart</button>
+                                    <button class="btn btn-primary buy-now">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Women Section -->
+            <section id="women" class="section-padding bg-light rounded-3 my-5">
+                 <div class="container">
+                    <h2 class="text-center section-title">Fragrances for Women</h2>
+                    <div class="row g-5">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card product-card h-100 shadow-sm">
+                               <img src="images/img5.png" class="card-img-top" alt="Honey Perfume">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title fs-3">Honey</h5>
+                                    <p class="card-text text-secondary">Sweet smells of honey and bergamot with notes of Rose and Oud.</p>
+                                    <p class="price mt-auto">Rs.699</p>
+                                    <div class="mt-3">
+                                        <button class="btn btn-outline-primary add-to-cart" data-name="Honey" data-price="699" data-img="images/img5.png">Add to Cart</button>
+                                        <button class="btn btn-primary buy-now">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card product-card h-100 shadow-sm">
+                               <img src="images/img6.png" class="card-img-top" alt="Senorita Perfume">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title fs-3">Senorita</h5>
+                                    <p class="card-text text-secondary">Top notes of Yuzu, Pomegranate and Mint for a romantic aroma.</p>
+                                    <p class="price mt-auto">Rs.699</p>
+                                    <div class="mt-3">
+                                        <button class="btn btn-outline-primary add-to-cart" data-name="Senorita" data-price="699" data-img="images/img6.png">Add to Cart</button>
+                                        <button class="btn btn-primary buy-now">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card product-card h-100 shadow-sm">
+                               <img src="images/img7.png" class="card-img-top" alt="Glam Perfume">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title fs-3">Glam</h5>
+                                    <p class="card-text text-secondary">An indulgent, glamorous, classy and magnetic fragrance.</p>
+                                    <p class="price mt-auto">Rs.599</p>
+                                    <div class="mt-3">
+                                        <button class="btn btn-outline-primary add-to-cart" data-name="Glam" data-price="599" data-img="images/img7.png">Add to Cart</button>
+                                        <button class="btn btn-primary buy-now">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+            </section>
+        </div>
+
+        <!-- Our Craft Section -->
+        <section id="craft" class="section-padding">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="section-title text-white">The Art of Perfumery</h2>
+                        <p class="lead fs-4 mb-4">Each bottle of Fantasy Perfume is a masterpiece, meticulously crafted from the world's finest ingredients. Our perfumers blend tradition and innovation to create unique, evocative scents that tell a story on your skin.</p>
+                        <a href="#" class="btn btn-outline-light btn-lg">Learn Our Story</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ingredient Spotlight Section -->
+        <section id="ingredients" class="section-padding bg-light">
+            <div class="container">
+                <h2 class="text-center section-title">Behind the Notes</h2>
+                <div class="row text-center g-5">
+                    <div class="col-md-3 ingredient-card">
+                        <a href="https://www.google.com/search?q=Bergamot" target="_blank" class="text-decoration-none text-dark">
+                            <img src="https://placehold.co/150x150/f0e68c/333?text=Bergamot" alt="Bergamot">
+                            <h5 class="fw-bold">Bergamot</h5>
+                            <p class="text-secondary">Sourced from the sun-drenched coasts of Italy, our Bergamot provides a sparkling, fresh citrus opening.</p>
+                        </a>
+                    </div>
+                    <div class="col-md-3 ingredient-card">
+                        <a href="https://www.google.com/search?q=Damask+Rose" target="_blank" class="text-decoration-none text-dark">
+                            <img src="https://placehold.co/150x150/ffb6c1/333?text=Rose" alt="Rose">
+                            <h5 class="fw-bold">Damask Rose</h5>
+                            <p class="text-secondary">Harvested at dawn in Bulgaria, the petals yield an intensely romantic and velvety heart note.</p>
+                        </a>
+                    </div>
+                    <div class="col-md-3 ingredient-card">
+                        <a href="https://www.google.com/search?q=Sandalwood" target="_blank" class="text-decoration-none text-dark">
+                            <img src="https://placehold.co/150x150/d2b48c/333?text=Sandalwood" alt="Sandalwood">
+                            <h5 class="fw-bold">Sandalwood</h5>
+                            <p class="text-secondary">From Mysore, India, our sustainable Sandalwood offers a creamy, rich, and comforting woody base.</p>
+                        </a>
+                    </div>
+                    <div class="col-md-3 ingredient-card">
+                        <a href="https://www.google.com/search?q=Royal+Oud" target="_blank" class="text-decoration-none text-dark">
+                            <img src="https://placehold.co/150x150/a0522d/333?text=Oud" alt="Oud">
+                            <h5 class="fw-bold">Royal Oud</h5>
+                            <p class="text-secondary">A rare and precious resin from Southeast Asia, providing a deep, complex, and smoky aroma.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container my-5">
+            <!-- Best Sellers Section -->
+            <section id="bestsellers" class="section-padding">
+                <h2 class="text-center section-title">Our Best Sellers</h2>
+                <div class="row g-5">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card product-card h-100 shadow-sm">
+                            <img src="images/img3.png" class="card-img-top" alt="G.O.A.T Perfume">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fs-3">G.O.A.T</h5>
+                                <p class="card-text text-secondary">A refreshing blend of bergamot, lavender, pepper and warm woody notes.</p>
+                                 <p class="price mt-auto">Rs.599</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-outline-primary add-to-cart" data-name="G.O.A.T" data-price="599" data-img="images/img3.png">Add to Cart</button>
+                                    <button class="btn btn-primary buy-now">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card product-card h-100 shadow-sm">
+                           <img src="images/img6.png" class="card-img-top" alt="Senorita Perfume">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fs-3">Senorita</h5>
+                                <p class="card-text text-secondary">Infused with top notes of Yuzu, Pomegranate and Mint for a romantic aroma.</p>
+                                <p class="price mt-auto">Rs.699</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-outline-primary add-to-cart" data-name="Senorita" data-price="699" data-img="images/img6.png">Add to Cart</button>
+                                    <button class="btn btn-primary buy-now">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-lg-4 col-md-6">
+                        <div class="card product-card h-100 shadow-sm">
+                            <img src="images/img2.png" class="card-img-top" alt="Oud Perfume">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fs-3">Oud</h5>
+                                <p class="card-text text-secondary">Notes of Caramel, Vanilla, Cedarwood, and Musk for a luxurious scent.</p>
+                                <p class="price mt-auto">Rs.699</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-outline-primary add-to-cart" data-name="Oud" data-price="699" data-img="images/img2.png">Add to Cart</button>
+                                    <button class="btn btn-primary buy-now">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Testimonials Section -->
+            <section id="testimonials" class="section-padding">
+                <h2 class="text-center section-title">What Our Clients Say</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card testimonial-card h-100">
+                            <div class="card-body">
+                                <p class="mb-0">"The Oud perfume is absolutely divine. It's my new signature scent and I get compliments everywhere I go. The scent lasts all day!"</p>
+                            </div>
+                            <div class="card-footer text-end">- Jessica M.</div>
+                        </div>
+                    </div>
+                     <div class="col-md-4">
+                        <div class="card testimonial-card h-100">
+                            <div class="card-body">
+                                <p class="mb-0">"Senorita is the perfect floral fragrance. It's light, fresh, and so elegant. The customer service was also exceptional."</p>
+                            </div>
+                            <div class="card-footer text-end">- David L.</div>
+                        </div>
+                    </div>
+                     <div class="col-md-4">
+                        <div class="card testimonial-card h-100">
+                            <div class="card-body">
+                                <p class="mb-0">"I bought G.O.A.T for my husband and he loves it. It's masculine without being overpowering. Highly recommend Fantasy Perfumes."</p>
+                            </div>
+                            <div class="card-footer text-end">- Emily R.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- FAQ Section -->
+            <section id="faq" class="section-padding bg-light rounded-3 my-5">
+                <div class="container">
+                    <h2 class="text-center section-title">Frequently Asked Questions</h2>
+                    <div class="accordion" id="faqAccordion">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            What is the difference between Eau de Parfum and Eau de Toilette?
+                          </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                          <div class="accordion-body">
+                            The main difference lies in the concentration of perfume oil. Eau de Parfum (EDP) has a higher concentration (typically 15-20%) and lasts longer, while Eau de Toilette (EDT) has a lower concentration (5-15%) and is lighter.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            How should I store my perfume?
+                          </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                          <div class="accordion-body">
+                            To preserve its fragrance, store your perfume in a cool, dark place away from direct sunlight and extreme temperature changes, such as a drawer or a closet.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            What is your return policy?
+                          </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                          <div class="accordion-body">
+                            We offer a 30-day return policy on all unopened products. If you are not satisfied with your purchase, please contact our customer service team to initiate a return or exchange.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="section-padding">
+            <div class="container">
+                <h2 class="text-center section-title">Contact Us</h2>
+                <div class="row gy-5 align-items-center">
+                    <div class="col-lg-5 text-center text-lg-start contact-info">
+                        <h3 class="h2 mb-4">Get in Touch</h3>
+                        <p class="lead mb-4"><i class="fas fa-map-marker-alt me-3 fa-fw"></i>Shop no 5, Market street, Malad(W)</p>
+                        <p class="lead mb-4"><i class="fas fa-envelope me-3 fa-fw"></i><a href="mailto:FantasyPerfumes@gmail.com" class="text-decoration-none text-dark">FantasyPerfumes@gmail.com</a></p>
+                        <p class="lead mb-4"><i class="fas fa-phone-alt me-3 fa-fw"></i><a href="tel:9865743390" class="text-decoration-none text-dark">9865743390</a> / <a href="tel:7835679842" class="text-decoration-none text-dark">7835679842</a></p>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="card p-4 p-md-5 border-0 shadow-lg">
+                            <form>
+                                <div class="mb-4">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control form-control-lg" id="name" placeholder="Enter Your Name" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="email" class="form-label">Email address</label>
+                                    <input type="email" class="form-control form-control-lg" id="email" placeholder="Enter Your Email" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control form-control-lg" id="message" rows="5" placeholder="Your Message" required></textarea>
+                                </div>
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="py-5">
+        <div class="container text-center">
+             <div class="footer-social-icons mb-4">
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="mb-0">&copy; Fantasy Perfumes. All Rights Reserved.</p>
+            <p class="mb-0 mt-2">Aarush Shah | TYBCA A | TDCA053A</p>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="cartModalLabel">Shopping Cart</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="cart-body">
+            <!-- Cart items will be injected here by JavaScript -->
+          </div>
+          <div class="modal-footer">
+            <h5 class="me-auto">Total: <span id="cart-total">Rs.0</span></h5>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continue Shopping</button>
+            <button type="button" class="btn btn-primary">Proceed to Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/6558443b63.js" crossorigin="anonymous"></script>
+
+    <!-- Shopping Cart Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cart = [];
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            const cartBody = document.getElementById('cart-body');
+            const cartTotal = document.getElementById('cart-total');
+            const cartBadge = document.querySelector('.cart-badge');
+
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const name = e.target.dataset.name;
+                    const price = parseFloat(e.target.dataset.price);
+                    const img = e.target.dataset.img;
+
+                    addToCart(name, price, img);
+                });
+            });
+
+            function addToCart(name, price, img) {
+                // Check if item already exists in cart
+                const existingItem = cart.find(item => item.name === name);
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push({ name, price, img, quantity: 1 });
+                }
+                renderCart();
+            }
+
+            function renderCart() {
+                cartBody.innerHTML = '';
+                let total = 0;
+                let totalItems = 0;
+
+                if (cart.length === 0) {
+                    cartBody.innerHTML = '<p class="text-center">Your cart is empty.</p>';
+                } else {
+                    cart.forEach((item, index) => {
+                        total += item.price * item.quantity;
+                        totalItems += item.quantity;
+
+                        const cartItem = document.createElement('div');
+                        cartItem.classList.add('row', 'mb-4', 'align-items-center');
+                        cartItem.innerHTML = `
+                            <div class="col-2">
+                                <img src="${item.img}" alt="${item.name}" class="cart-item-img">
+                            </div>
+                            <div class="col-4">
+                                <h6 class="mb-0">${item.name}</h6>
+                                <small class="text-muted">Price: Rs.${item.price}</small>
+                            </div>
+                            <div class="col-4 d-flex align-items-center">
+                                <button class="btn btn-sm btn-secondary change-quantity" data-index="${index}" data-amount="-1">-</button>
+                                <input type="number" value="${item.quantity}" class="form-control text-center mx-2 quantity-input" min="1" readonly>
+                                <button class="btn btn-sm btn-secondary change-quantity" data-index="${index}" data-amount="1">+</button>
+                            </div>
+                            <div class="col-2 text-end">
+                                <button class="btn btn-sm btn-danger remove-item" data-index="${index}">&times;</button>
+                            </div>
+                        `;
+                        cartBody.appendChild(cartItem);
+                    });
+                }
+                
+                cartTotal.textContent = `Rs.${total.toFixed(2)}`;
+                cartBadge.textContent = totalItems;
+                cartBadge.style.display = totalItems > 0 ? 'block' : 'none';
+            }
+
+            cartBody.addEventListener('click', e => {
+                if (e.target.classList.contains('change-quantity')) {
+                    const index = parseInt(e.target.dataset.index);
+                    const amount = parseInt(e.target.dataset.amount);
+                    changeQuantity(index, amount);
+                } else if (e.target.classList.contains('remove-item')) {
+                    const index = parseInt(e.target.dataset.index);
+                    removeItem(index);
+                }
+            });
+
+            function changeQuantity(index, amount) {
+                const item = cart[index];
+                if (item) {
+                    item.quantity += amount;
+                    if (item.quantity <= 0) {
+                        removeItem(index);
+                    } else {
+                        renderCart();
+                    }
+                }
+            }
+
+            function removeItem(index) {
+                cart.splice(index, 1);
+                renderCart();
+            }
+            
+            // Initial render
+            renderCart();
+        });
+    </script>
+</body>
+</html>
+
